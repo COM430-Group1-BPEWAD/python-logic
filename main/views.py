@@ -43,16 +43,16 @@ def patientInfoView(request):
     print(request.POST)
     patientInfo = get_object_or_404(patient, patientUserName=request.POST['uName'])
     print(patientInfo)
-    return render(request, "main/patient-info.html", {'patient': patientInfo})
+    return render(request, "patient/patient-info.html", {'patient': patientInfo})
 
 def patientIdInfoView(request, id):
     patientInfo = get_object_or_404(patient, id = id)
-    return render(request, "main/patient-info.html", {'patient': patientInfo})
+    return render(request, "patient/patient-info.html", {'patient': patientInfo})
 
 def newReading(request, id):
     patientInfo = get_object_or_404(patient, id=id)
     form = bloodPressureForm()
-    return render(request, "main/new-reading.html", {"patient": patientInfo, "form": form})
+    return render(request, "patient/new-reading.html", {"patient": patientInfo, "form": form})
 
 def recordBP(request, id):
     patientInfo = get_object_or_404(patient, id=id)
@@ -63,7 +63,7 @@ def recordBP(request, id):
         diastolic = request.POST['diastolic']
     )
     newBRReading.save()
-    return render(request, "main/readingReceived.html", {'systolic': int(newBRReading.systolic), 'diastolic': int(newBRReading.diastolic), 'patient': patientInfo})
+    return render(request, "patient/readingReceived.html", {'systolic': int(newBRReading.systolic), 'diastolic': int(newBRReading.diastolic), 'patient': patientInfo})
 
 def emt(request, id):
     patientInfo = get_object_or_404(patient, id=id)
@@ -76,7 +76,7 @@ def emergency(request, id):
 def history(request, id):
     patientInfo = get_object_or_404(patient, id=id)
     bp = get_list_or_404(bpReadings, patient_id=patientInfo)
-    return render(request, "main/history.html", {'patient': patientInfo, 'bpReadings': bp})
+    return render(request, "patient/history.html", {'patient': patientInfo, 'bpReadings': bp})
 
 #Goes to the Survey. Currently static HTML
 def surveyform(response):
