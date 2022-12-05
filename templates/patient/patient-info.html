@@ -1,0 +1,16 @@
+<html>
+    <head>
+        <title>Patient Information</title>
+    </head>
+    {% csrf_token %}
+     <h1>Information for {{ user.firstName }}</h1>
+     <ul>
+         <li>First Name: {{ user.firstName }}</li>
+         <li>Last Name: {{ user.lastName }}</li>
+         <li>Email: {{ user.email }}</li>
+         <li>Patient Address: {{ user.address }}</li>
+         <li>{{ user.firstName }}'s allergies: {{ user.allergies }}</li>
+         <li>User Name: {{ user.UserName }}</li>
+     </ul>
+     <a href="{% url '' %}">Home</a>
+</html>
