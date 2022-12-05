@@ -20,12 +20,12 @@ urlpatterns = [
     
     
     # urls for database schema
-    path('patient/information/', views.patientInfoView, name="Personal details"),
-    path('patient/<int:id>/information', views.patientIdInfoView, name="Personal details"),
-    path('patient/<int:id>/new-reading', views.newReading, name="New Blood Pressure Reading"),
-    path('patient/<int:id>/report/', views.recordBP),
+    path('patient/information/', views.patientIdInfoView, name="Personal details"),
+    #path('patient/<int:id>/information', views.patientIdInfoView, name="Personal details"),
+    path('patient/new-reading', views.newReading, name="New Blood Pressure Reading"),
+    path('patient/report/', views.recordBP),
     path('patient/<int:id>/emt', views.emt),
     path('patient/<int:id>/emergency', views.emergency),
-    path('patient/<int:id>/history', views.history),
+    path('patient/history', views.history),
     path('patient/<int:id>/panel', views.viewPanel, name="Patient Dash")
 ]
